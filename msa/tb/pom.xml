@@ -36,7 +36,7 @@
         <main.dir>${basedir}/../..</main.dir>
         <pkg.name>thingsboard</pkg.name>
         <tb.docker.name>tb</tb.docker.name>
-        <tb-postgres.docker.name>tb-postgres</tb-postgres.docker.name>
+        <nb-postgres.docker.name>nb-postgres</nb-postgres.docker.name>
         <tb-cassandra.docker.name>tb-cassandra</tb-cassandra.docker.name>
         <pkg.installFolder>/usr/share/${pkg.name}</pkg.installFolder>
         <pkg.upgradeVersion>3.3.1</pkg.upgradeVersion>
@@ -79,7 +79,7 @@
                         </configuration>
                     </execution>
                     <execution>
-                        <id>copy-tb-postgres-deb</id>
+                        <id>copy-nb-postgres-deb</id>
                         <phase>package</phase>
                         <goals>
                             <goal>copy</goal>
@@ -143,7 +143,7 @@
                         </configuration>
                     </execution>
                     <execution>
-                        <id>copy-docker-tb-postgres-config</id>
+                        <id>copy-docker-nb-postgres-config</id>
                         <phase>process-resources</phase>
                         <goals>
                             <goal>copy-resources</goal>
@@ -215,28 +215,28 @@
                         </configuration>
                     </execution>
                     <execution>
-                        <id>build-docker-tb-postgres-image</id>
+                        <id>build-docker-nb-postgres-image</id>
                         <phase>pre-integration-test</phase>
                         <goals>
                             <goal>build</goal>
                         </goals>
                         <configuration>
                             <skip>${dockerfile.skip}</skip>
-                            <repository>${docker.repo}/${tb-postgres.docker.name}</repository>
+                            <repository>${docker.repo}/${nb-postgres.docker.name}</repository>
                             <verbose>true</verbose>
                             <googleContainerRegistryEnabled>false</googleContainerRegistryEnabled>
                             <contextDirectory>${project.build.directory}/docker-postgres</contextDirectory>
                         </configuration>
                     </execution>
                     <execution>
-                        <id>tag-docker-tb-postgres-image</id>
+                        <id>tag-docker-nb-postgres-image</id>
                         <phase>pre-integration-test</phase>
                         <goals>
                             <goal>tag</goal>
                         </goals>
                         <configuration>
                             <skip>${dockerfile.skip}</skip>
-                            <repository>${docker.repo}/${tb-postgres.docker.name}</repository>
+                            <repository>${docker.repo}/${nb-postgres.docker.name}</repository>
                             <tag>${project.version}</tag>
                         </configuration>
                     </execution>
@@ -307,25 +307,25 @@
                                 </configuration>
                             </execution>
                             <execution>
-                                <id>push-latest-docker-tb-postgres-image</id>
+                                <id>push-latest-docker-nb-postgres-image</id>
                                 <phase>pre-integration-test</phase>
                                 <goals>
                                     <goal>push</goal>
                                 </goals>
                                 <configuration>
                                     <tag>latest</tag>
-                                    <repository>${docker.repo}/${tb-postgres.docker.name}</repository>
+                                    <repository>${docker.repo}/${nb-postgres.docker.name}</repository>
                                 </configuration>
                             </execution>
                             <execution>
-                                <id>push-version-docker-tb-postgres-image</id>
+                                <id>push-version-docker-nb-postgres-image</id>
                                 <phase>pre-integration-test</phase>
                                 <goals>
                                     <goal>push</goal>
                                 </goals>
                                 <configuration>
                                     <tag>${project.version}</tag>
-                                    <repository>${docker.repo}/${tb-postgres.docker.name}</repository>
+                                    <repository>${docker.repo}/${nb-postgres.docker.name}</repository>
                                 </configuration>
                             </execution>
                             <execution>

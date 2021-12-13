@@ -3,7 +3,7 @@
 This project provides the build for the ThingsBoard single docker images.
 
 * `thingsboard/tb` - single instance of ThingsBoard with embedded HSQLDB database.
-* `thingsboard/tb-postgres` - single instance of ThingsBoard with PostgreSQL database.
+* `thingsboard/nb-postgres` - single instance of ThingsBoard with PostgreSQL database.
 * `thingsboard/tb-cassandra` - single instance of ThingsBoard with Hybrid PostgreSQL (entities) and Cassandra (timeseries) database.
 
 ## Running
@@ -34,7 +34,7 @@ Where:
 - `-p 5685:5685`            - connect local port 5685 to exposed internal COAP port 5685 (lwm2m) 
 - `-v ~/.mytb-data:/data`   - mounts the host's dir `~/.mytb-data` to ThingsBoard DataBase data directory
 - `--name mytb`             - friendly local name of this machine
-- `thingsboard/tb`          - docker image, can be also `thingsboard/tb-postgres` or `thingsboard/tb-cassandra`
+- `thingsboard/tb`          - docker image, can be also `thingsboard/nb-postgres` or `thingsboard/tb-cassandra`
 
 > **NOTE**: **Windows** users should use docker managed volume instead of host's dir. Create docker volume (for ex. `mytb-data`) before executing `docker run` command:
 > ```
@@ -89,6 +89,6 @@ $ docker run -it -v ~/.mytb-data:/data --rm thingsboard/tb upgrade-tb.sh
 $ docker start mytb
 ```
 
-**NOTE**: if you use different database change image name in all commands from `thingsboard/tb` to `thingsboard/tb-postgres` or `thingsboard/tb-cassandra` correspondingly.
+**NOTE**: if you use different database change image name in all commands from `thingsboard/tb` to `thingsboard/nb-postgres` or `thingsboard/tb-cassandra` correspondingly.
  
 **NOTE**: replace host's directory `~/.mytb-data` with directory used during container creation. 
