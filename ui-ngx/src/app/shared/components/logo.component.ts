@@ -26,7 +26,7 @@ export class LogoComponent {
   logo = 'assets/logo_title_white.svg';
 
   gotoThingsboard(): void {
-    window.open('https://nibiaadevices.com', '_blank');
+    window.open('https://nibiaa.com', '_blank');
   }
 
 }
